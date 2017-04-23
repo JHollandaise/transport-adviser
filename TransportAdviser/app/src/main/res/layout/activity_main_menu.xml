@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_main_menu"
+
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:context="jholland.transportadviser.MainMenu">
+
+
+        <Button
+            android:id="@+id/btnTransportMap"
+            android:text="Live Transport Map"
+
+            android:textAllCaps="false"
+            android:textSize="@dimen/btn_text_size"
+            android:gravity="left|center_vertical"
+            android:paddingTop="@dimen/btn_text_padding"
+
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="@dimen/btn_height"
+
+            android:drawableLeft="@drawable/map_icon"
+            android:drawablePadding="10dp"
+
+            android:backgroundTint="@color/colorBtnTint"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/btnTransportData"
+            android:text="Transport Data"
+
+            android:textAllCaps="false"
+            android:textSize="@dimen/btn_text_size"
+            android:gravity="left|center_vertical"
+            android:paddingTop="@dimen/btn_text_padding"
+
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="@dimen/btn_height"
+
+            android:drawableLeft="@drawable/data_icon"
+            android:drawablePadding="10dp"
+
+            android:backgroundTint="@color/colorBtnTint"
+            android:typeface="sans"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

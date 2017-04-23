@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_transport_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jholland.transportadviser.TransportData">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="time of transit"
+            android:textSize="25sp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/textColorPrimary"
+
+            android:id="@+id/transit_Time"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="time to leave"
+            android:textSize="25sp"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/textColorPrimary"
+
+            android:id="@+id/leave_Time"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:id="@+id/drawContainer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/directionDrawer"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+
+
+                android:text="From:"
+                android:textColor="@color/textColorSecondary"
+                android:gravity="center"/>
+            <fragment
+                android:id="@+id/place_autocomplete_fragment_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+
+
+                android:text="To:"
+                android:textColor="@color/textColorSecondary"
+                android:gravity="center"/>
+            <fragment
+                android:id="@+id/place_autocomplete_fragment_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                />
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:text="Search"
+
+                android:textAllCaps="false"
+                android:textSize="@dimen/btn_text_size"
+                android:gravity="center"
+                android:paddingTop="@dimen/btn_text_padding"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/colorBtnTint"
+                android:typeface="sans"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:id="@+id/btnShowDir">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+
+                android:id="@+id/textDraw"
+
+                android:text="Show Directions"
+                android:textColor="@color/textColorSecondary"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,268 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm,amssymb,gensymb} % Math packages
+
+\usepackage{graphicx}
+\graphicspath{{/Users/josephholland/Documents/transport_adviser/report/images/}}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{lscape}
+\usepackage{array}
+
+\usepackage{tikz,calc}
+\usepackage{forest}
+\usetikzlibrary{arrows.meta}
+
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+\textsc{University of Cambridge} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Report on the Product Design Assignment \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Joseph Holland} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+    \section{Introduction}
+
+        The task was set to identify a specific problem with a mode of public transport and to devise a way to improve this situation by designing or redesigning a product, system or service.\\
+
+        The problem that was identified was relating to the fact that commuters will often miss their train due to not leaving to walk to the station on time as they do not correctly judge how long it will take to get there.\\
+
+        The solution was to design and build an android app that would determine the train that the commuter would catch and then notify the commuter of an appropriate time to leave their location in order to arrive at the station in time for their train.\\
+
+        An additional feature that was developed into the application was a live map display of the current locations of trains in the UK.
+
+%---------------------------------------------------------------------------------------
+%	DESIGN
+%---------------------------------------------------------------------------------------
+
+    \pagebreak
+    \section{Problem Identification}
+
+        The initial task in the design process was to identify a suitable problem with a mode of public transport. To accomplish this, the problem space was widened and abstracted in order to allow for a range of problems to be made present. Below are listed a number of problems that were considered to be solved:
+
+        \begin{itemize}
+            \item Train related problems
+            \begin{itemize}
+                \item Train stops at many stops before your required stop, even if no passengers enter/leave the train
+
+                \item Many journeys have the same fare, despite them being different distances
+
+                \item Trains can only take you to locations where a station is available
+
+                \item Some trains run with very few passengers
+
+                \item Other trains run over capacity
+
+                \item Trains run slowly around tight corners
+
+                \item Many commuters miss their train and must either catch a later train or forfeit their fare
+
+                \item Tickets are not always checked on the train for validity
+
+                \item Trains require a large number of staff to operate
+            \end{itemize}
+
+            \item Bus related problems
+            \begin{itemize}
+                \item Buses experience traffic
+
+                \item Buses that have a low demand have very high fares
+            \end{itemize}
+        \end{itemize}
+
+    \section{Task Clarification}
+
+        The problem that was selected was that commuters often miss their trains and thus will be late to arrive at their destination and can sometimes have to pay more for a later train.\\
+
+        The need for a solution to this problem is great as it causes for the trains that are missed to be under capacity and for the trains that are caught late are over capacity. It also means that commuters can be late to arrive to their destination and spend additional money on fares unnecersarily.\\
+
+        This problem was abstracted in order to cause for the widest range of possible solutions to be discovered and explored. After this abstraction process, the problem statement was as follows:\\
+        \begin{center}
+            \textit{Devise a way to reduce the number of people who miss their train during a commute}\\
+        \end{center}
+
+        Then, in order to realise the solution, a requirements list was drawn up:\\
+
+        [Key: D/W = Demand/Wish; Wt = Weight (wish importance) between 1 and 3]
+
+        \begin{center}
+        \begin{tabular}{|| c | c || p{12cm} || c ||}
+            \hline
+            \textbf{D/W} & \textbf{Wt} & \textbf{Requirements} & \textbf{Keyword} \\
+            \hline
+            &&&\\
+            && \textbf{Functionality} & \\
+            \hline
+            D && The system must determine train operating times & Timings \\
+            D && The system must determine live train locations & Locations \\
+            D && The system must determine User location and destination &  Directions \\
+            D && The system must determine required train for journey & Journey \\
+            D && The system must calculate an appropriate time for the user to travel to station & Leaving \\
+
+            W & 3 & The system sets an alarm for when the user should begin journey & Alarm \\
+            W & 2 & The user can select trains on live map and get details of selected train & Details \\
+            W & 1 & The user can review directions for their selected journey & Review \\
+            &&&\\
+
+            && \textbf{Efficiency} & \\
+            \hline
+            D && The system must minimise calls to data APIs thus minimising required bandwidth & Bandwidth \\
+            D && The system must minimise calculations on device & Battery \\
+            W & 3 & The device should store minimal information & Size \\
+            W & 3 & The device should make minimal API calls that are general/uniform & API \\
+            &&&\\
+
+            && \textbf{Useablilty} & \\
+            \hline
+            D && The application must have minimal bugs so as to minimise crashes & Bugs \\
+            W & 3 & The user should make as few interactions as possible to recieve the required response & Interaction \\
+            W & 2 & The system should be user-friendly and clear to navigate & Navigation \\
+            W & 1 & The system should be intergrated with other systems to provide a seamless operation experience (e.g Google directions/maps intergration) & Integration \\
+            &&&\\
+
+            && \textbf{Aesthetics} & \\
+            \hline
+            W & 2 & The application should have a clean and user-friendly design & Design \\
+            W & 1 & The application design should follow Google Material Design requirements & Material \\
+            &&& \\
+
+            && \textbf{Timescales} & \\
+            \hline
+            D && Product and work deadline: 25 April 2017 & Work \\
+            D && Presentation date: 26 April 2017 & Presentation \\
+            \hline
+
+        \end{tabular}
+        \end{center}
+
+    \section{Conceptual Design}
+
+        In order to begin designing a concept to solve the problem, the overall function of the solution must be determined. The overall function of the solution must be to provide the user with useful information and notification of train locations with respect to them in order for them to have the best chance of avoiding missing their train.\\
+
+        This overall function was then decomposed into smaller subfunctions as detailed below:\\
+
+        \begin{center}
+        \begin{forest}
+            for tree={
+                align=center,
+                parent anchor=south,
+                child anchor=north,
+                font=\sffamily,
+                l sep+=10pt,
+                edge path={
+                    \noexpand\path [draw, \forestoption{edge}] (!u.parent anchor) -- +(0,-10pt) -| (.child anchor)\forestoption{edge label};
+                },{}
+            }
+            [
+                Present\\information
+                [
+                    Determine\\Train locations
+                    [
+                        Aquire\\raw train data
+                    ]
+                ]
+                [
+                    Determine\\train times
+                    [
+                        Gather\\directions data
+                    ]
+                    [
+                        Gather\\timetables
+                    ]
+                ]
+                [
+                    Calculate\\journey times
+                    [
+                        Collect\\arrival/leaving times
+                    ]
+                    [
+                        Gather\\timetables
+                    ]
+                ]
+            ]
+        \end{forest}
+        \end{center}
+
+        Next, solution priciples were determined and combinations of these principles were identified:
+
+        \begin{center}
+        \begin{tabular}{|| c || c | c | c | c ||}
+            \hline
+            \textbf{Function} & \multicolumn{4}{| c |}{\textbf{Solution Priciples}} \\
+            \hline
+            Present information & Graphically & As Text & On a map layout & Spoken \\
+            Aquire raw train data & From GPS devices on trains & From public APIs && \\
+            Gather Directions data & Design bespoke directions system & Use Google directions API \\
+            
+
+
+
+        \end{tabular}
+        \end{center}
+
+
+
+
+\end{document}

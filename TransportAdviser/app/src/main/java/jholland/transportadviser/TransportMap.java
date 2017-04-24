@@ -25,7 +25,7 @@ public class TransportMap extends FragmentActivity implements
     private GoogleApiClient client;
     private Handler mHandler;
 
-    private final String  IP_ADDRESS = "192.168.0.4";
+    private final String  IP_ADDRESS = "10.248.55.114";
     private TrainDrawer trainDrawer = new TrainDrawer();
 
     private int mInterval = 20000;

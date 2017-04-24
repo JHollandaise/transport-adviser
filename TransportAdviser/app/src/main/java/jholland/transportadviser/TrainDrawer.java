@@ -43,7 +43,7 @@ public class TrainDrawer {
 
     private List<Marker> trainMarkers = new ArrayList<>();
 
-    private boolean offline = true;
+    private boolean offline = false;
 
     public void setContext(Context context) {
         mContext = context;

@@ -98,7 +98,7 @@ def index(latmin, latmax, longmin, longmax):
 
     return template(trains_to_return)
 
-run(host='192.168.0.4', port=8080)
+run(host='10.248.34.200', port=8080)
 
 def signal_handler(signal, frame):
 

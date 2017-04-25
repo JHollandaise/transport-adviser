@@ -325,9 +325,6 @@
     \pagebreak
     \section{Embodiment Design}
 
-        Below is a flow chart describing the operation flow of the proposed application:
-
-        \pagebreak
         \subsection{Redundancy}
 
             This system will be built to function under the circumstances of sub-system failure. It will be capable of this by causing the sub-systems to be built upon the primary functionality. That primary functionality will be the system's ability to aquire appropriate direction data from the Google directions API. Any sub-system failure, such as the map view or the live train data capture, will not cause the directions API to fail. This will be achieved by coding the sub-systems as proprietary, with the base function able to operate without the sub-systems being available.
@@ -350,7 +347,50 @@
 
             Installation - This application is installed by the user, to minimise inconvinience, the application should be properly optimised to reduce download and installation time.\\
 
-            Use - This application must be optimised and designed properly to simplify 
+            Use - This application must be optimised and designed properly to simplify the user experience. This can be accomplished by minimising the number of button presses the user must execute in order to accomplish any given task. In addition to this, clear labelling of buttons and other points of interest with clear text or with simple graphics can be utilised.\\
+
+            Maintenance - The programmers that produced the code for this application will also have to maintain it by removing any bugs that surface during the product lifetime. To make this process as simple as possible, code will have to be clearly commented. This will include breif descriptions of how functions operate and the purpose of classes and other system modules.
+
+        \subsection{Diversity Analysis}
+
+            To allow this product to be accesible to a diverse population, the following considerations have been taken into account:
+
+            \begin{itemize}
+                \item The product should be adapted to offer a variety of languages, to alllow access to those whose first language is not english
+
+                \item The product should be built to work in many countries to allow people to access the product for a wide variety of places
+
+                \item The product should be as simple to use as possible to allow the use by a wide range of ages and learning ablility
+
+                \item The product should include large buttons and interfaces to allow access by those with impared vision
+            \end{itemize}
+
+        \pagebreak
+        \subsection{Task Analysis}
+
+            Below is detailed the operation flow of the application:
+
+            \pagebreak
+            \subsubsection{sub-task analyis}
+                \begin{itemize}
+                    \item Input of locations
+                        \begin{itemize}
+                            \item The user must be able to easily navigate to the desired locations. This can be achieved by utilising the simple touch gestures offered by the Google Maps API
+                            \item The user can also enter this information though a text interface, this gives the user the chance to enter the data by their prefered method
+                        \end{itemize}
+
+                    \item User gets further information on their desired route
+                        \begin{itemize}
+                            \item This is simplified for the user as it is achieved by simply performing a click operation on the displayed route
+                        \end{itemize}
+
+                    \item User alarm
+                        \begin{itemize}
+                            \item This operation requires the user to check the option for an alarm to be set in the application options
+                            \item This operation makes the application more accesible as it will warn the user to begin their journey without any further user cognition
+                        \end{itemize}
+                \end{itemize}
+
 
 
 

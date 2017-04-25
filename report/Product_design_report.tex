@@ -30,6 +30,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage[none]{hyphenat}
+
 \usepackage{lscape}
 \usepackage{array}
 
@@ -163,7 +165,7 @@
 
             W & 3 & The system sets an alarm for when the user should begin journey & Alarm \\
             W & 2 & The user can select trains on live map and get details of selected train & Details \\
-            W & 1 & The user can review directions for their selected journey & Review \\
+            W & 2 & The user can review directions for their selected journey & Review \\
             &&&\\
 
             && \textbf{Efficiency} & \\
@@ -171,7 +173,7 @@
             D && The system must minimise calls to data APIs thus minimising required bandwidth & Bandwidth \\
             D && The system must minimise calculations on device & Battery \\
             W & 3 & The device should store minimal information & Size \\
-            W & 3 & The device should make minimal API calls that are general/uniform & API \\
+            W & 2 & The device should make minimal API calls that are general/uniform & API \\
             &&&\\
 
             && \textbf{Useablilty} & \\
@@ -201,7 +203,7 @@
 
         In order to begin designing a concept to solve the problem, the overall function of the solution must be determined. The overall function of the solution must be to provide the user with useful information and notification of train locations with respect to them in order for them to have the best chance of avoiding missing their train.\\
 
-        This overall function was then decomposed into smaller subfunctions as detailed below:\\
+        This overall function was then decomposed into smaller sub-functions as detailed below:\\
 
         \begin{center}
         \begin{forest}
@@ -248,20 +250,107 @@
         Next, solution priciples were determined and combinations of these principles were identified:
 
         \begin{center}
-        \begin{tabular}{|| c || c | c | c | c ||}
+        \begin{table}[!ht]
+        \small
+        \begin{tabular}{|| c || m{3cm} | c | c | c ||}
             \hline
             \textbf{Function} & \multicolumn{4}{| c |}{\textbf{Solution Priciples}} \\
             \hline
             Present information & Graphically & As Text & On a map layout & Spoken \\
             Aquire raw train data & From GPS devices on trains & From public APIs && \\
-            Gather Directions data & Design bespoke directions system & Use Google directions API \\
-
-
-
-
+            Gather Directions data & Design bespoke directions system & Use Google directions API&& \\
+            Gather Timetables & Use Public Rail API&&&\\
+            Collect Arrival/Leaving Times & Request user input&&&\\
+            Determine Train Locations & Translate GPS data into latitude longitude & Analyse data from API&&\\
+            \hline
         \end{tabular}
+        \end{table}
         \end{center}
 
+
+        \pagebreak
+        Three combinations concepts were identified:
+
+        \begin{center}
+        \begin{table}[!ht]
+        \small
+        \begin{tabular}{|| c || m{3cm} | m{3cm} | m{3cm} ||}
+            \hline
+            \textbf{Function} & \multicolumn{3}{| c |}{\textbf{Combnation}} \\
+            \hline
+            & Combination 1 & Combination 2 & Combination 3\\
+            \hline
+            Present information & As Text & On a map layout & Spoken \\
+            Aquire raw train data & From public APIs & From public APIs & From GPS devices on trains \\
+            Gather Directions data & Use Google directions API & Use Google directions API & Design bespoke directions system  \\
+            Gather Timetables & Use Public Rail API & Use Public Rail API & Use Public Rail API\\
+            Collect Arrival/Leaving Times & Request user input & Request user input & Request user input\\
+            Determine Train Locations & Analyse data from API & Analyse data from API & Translate GPS data into latitude longitude \\
+            \hline
+        \end{tabular}
+        \end{table}
+        \end{center}
+
+        To identify the best solution, a concept evaluation was set up:
+
+        \begin{center}
+        \begin{table}[!ht]
+        \small
+        \begin{tabular}{|| l | c | c | c | c | c | c | c ||}
+        \hline
+        &&\multicolumn{2}{| c |}{Concept 1} & \multicolumn{2}{| c |}{Concept 2} & \multicolumn{2}{| c ||}{Concept 3}\\
+        \hline
+        Criteria & Wt. & value & score & value & score & value & score\\
+        \hline
+        Alarm & 3 & - & - & 0 & 0 & +2 & +6\\
+        Details & 2 & - & - & +2 & +4 & -2 & -4\\
+        Review & 2 & - & - & +1 & +2 & -1 & - 2\\
+        Size & 3 & - & - & -2 & -6 & -2 & -6\\
+        API & 2 & - & - & -1 & -2 & 0 & 0\\
+        Interaction & 3 & - & - & +2 & +6 & +2 & +6\\
+        Navigation & 2 & - & - & +1 & +2 & +2 & +4\\
+        Integration & 1 & - & - & +1 & +1 & -2 & -2\\
+        Design & 2 & - & - & +2 & +4 & +2 & +4\\
+        Material & 1 & - & - & 0 & 0 & 0 & 0\\
+        \hline
+        \multicolumn{2}{|| r |}{total score} && 0 && +11 && +6\\
+        \hline
+
+        \end{tabular}
+        \end{table}
+        \end{center}
+
+        Thus, the chosen concept was concept 2.
+
+    \pagebreak
+    \section{Embodiment Design}
+
+        Below is a flow chart describing the operation flow of the proposed application:
+
+        \pagebreak
+        \subsection{Redundancy}
+
+            This system will be built to function under the circumstances of sub-system failure. It will be capable of this by causing the sub-systems to be built upon the primary functionality. That primary functionality will be the system's ability to aquire appropriate direction data from the Google directions API. Any sub-system failure, such as the map view or the live train data capture, will not cause the directions API to fail. This will be achieved by coding the sub-systems as proprietary, with the base function able to operate without the sub-systems being available.
+
+        \subsection{Tolerance}
+
+            This system will be highly tolerant to unexpected or uncertain situations by the implementation of appropriate input analysis. This will revolve around a well structured user and API data input flow that is based on the principals of GIGO (Garbage In Garbage Out). This mean that the input flow will be properly designed to identify usefull and properly structured data coming in and to disregaurd data that is innapropriate. If the user input is innapropriate, the system will warn the user of the fact and will require the input to be repeated until the data is acceptable. If the innapropriate data comes from the API, the system will simply disreguard the data and will continue to request the data from the API until the correct data is received.
+
+        \subsection{Safety}
+
+            This system will be entirely safe as it is not a physical product. The primary safety concerns surrounding the use of this product are covered by the safety systems of the hardware being used to run it. Other than this, the user may pay attention to the appllication over the surroundings of the user, putting them in potentially hazourdous situations. This will be minimised by providing the user with appropriate warnings of this fact and to caution them to keep their attention in the proper places.
+
+    \section{Design for People}
+
+        \subsection{Stakeholder Analysis}
+
+            Production - This application would be produced by a team of programmers, engineers and designers. To streamline the process for this team, appropriate workloads and deadlines must be applied to them in order to reduce their chances of over stressing.\\
+
+            Distribution - This application would be distributed by the appropriate app stores and thus, once the application is uploaded, no human interaction is involved.\\
+
+            Installation - This application is installed by the user, to minimise inconvinience, the application should be properly optimised to reduce download and installation time.\\
+
+            Use - This application must be optimised and designed properly to simplify 
 
 
 
